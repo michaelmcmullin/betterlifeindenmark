@@ -29,5 +29,4 @@ tackling the problem as the WEF graph showed.
 
 ## Displaying the graph
 The chart uses D3js and Dimple to display the results in a browser. You can see
-the current version of [Denmark's Standard of Living 2016 here]
-(https://mrmcnerd.github.io/betterlifeindenmark/).
+the current version of [Denmark's Standard of Living 2016 here](https://mrmcnerd.github.io/betterlifeindenmark/).
