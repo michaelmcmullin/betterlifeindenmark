@@ -26,3 +26,8 @@ Where necessary, I changed the headings to better reflect the original data.
 The previous example given (homicides) was left unchanged, because the original
 data reflects the actual number of homicides, not how well a country is doing
 tackling the problem as the WEF graph showed.
+
+## Displaying the graph
+The chart uses D3js and Dimple to display the results in a browser. You can see
+the current version of [Denmark's Standard of Living 2016 here]
+(https://mrmcnerd.github.io/betterlifeindenmark/).
