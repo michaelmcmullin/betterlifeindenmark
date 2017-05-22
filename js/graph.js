@@ -1,7 +1,7 @@
-var svg = dimple.newSvg("#chart", 1200, 1000);
+var svg = dimple.newSvg("#chart", 1200, 600);
 d3.tsv("denmark.tsv", function (data) {
     var denmarkChart = new dimple.chart(svg, data);
-    denmarkChart.setBounds(75, 30, 480, 330)
+    denmarkChart.setMargins(200, 30, 50, 50)
     var x = denmarkChart.addMeasureAxis("x", "Difference");
     x.title = "Comparison with OECD Average";
     var y = denmarkChart.addCategoryAxis("y", "Category");
