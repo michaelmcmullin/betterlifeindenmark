@@ -9,8 +9,8 @@ d3.tsv("all_countries.tsv", function (data) {
     countryChart.setMargins(200, 30, 50, 50);
     var x = countryChart.addMeasureAxis("x", country);
     x.title = "Comparison with OECD Average";
-    x.overrideMin = -50;
-    x.overrideMax = 50;
+    x.overrideMin = -100;
+    x.overrideMax = 100;
     var y = countryChart.addCategoryAxis("y", "Category");
     y.addOrderRule("Order", true);
     countryChart.addSeries(null, dimple.plot.bar);
