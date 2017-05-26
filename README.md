@@ -1,4 +1,5 @@
 # Better Life In Denmark
+### [Live Demo](https://mrmcnerd.github.io/betterlifeindenmark/)
 
 A number of graphs have popped up using data from the [OECD Better Life
 Initiative data, 2016](www.oecd.org/statistics/Better-Life-Initiative-2016-country-notes-data.xlsx).
@@ -30,3 +31,11 @@ tackling the problem as the WEF graph showed.
 ## Displaying the graph
 The chart uses D3js and Dimple to display the results in a browser. You can see
 the current version of [Denmark's Standard of Living 2016 here](https://mrmcnerd.github.io/betterlifeindenmark/).
+
+A few nice features include:
+
+* Allows users to select any of the OECD countries for comparison.
+* 'Bad' results are highlighted in red, because sometimes you want to be above
+average (income), and sometimes below (homocides).
+
+Enjoy!

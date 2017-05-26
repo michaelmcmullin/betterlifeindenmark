@@ -1,14 +1,16 @@
 "use strict";
 
 d3.tsv("all_countries.tsv", function (data) {
-    var svg = dimple.newSvg("#chart", 1200, 600);
+    // Initial set up
     var country = "Denmark";
     var dict = {};
 
-    selectCountry(country);
+    selectCountry();
+    var svg = dimple.newSvg("#chart", 1200, 600);
     var countries = d3.select("#countries");
     var countryChart = new dimple.chart(svg, data);
     countryChart.setMargins(200, 30, 50, 50);
+
     var x = countryChart.addMeasureAxis("x", country);
     x.title = "Comparison with OECD Average";
     x.overrideMin = -80;
@@ -20,12 +22,15 @@ d3.tsv("all_countries.tsv", function (data) {
     countryChart.addSeries(null, dimple.plot.bar);
     refreshGraph(0);
 
+    // Handle the selection of a new country.
     countries.on("change", function(d){
         country = d3.select(this).property("value");
         x.measure = country;
         refreshGraph(1000);
     });
 
+    // Maintain a dictionary of certain data that can be used to selectively
+    // manipulate various aspects of the chart.
     function populateDict() {
         var chartData = countryChart.data;
         for(var i=0; i<data.length; i++) {
@@ -35,7 +40,9 @@ d3.tsv("all_countries.tsv", function (data) {
         }
     }
 
-    function selectCountry(country) {
+    // Selects a country from the drop down that matches the currently
+    // displayed chart data.
+    function selectCountry() {
         var countrySelect = document.getElementById("countries");
         for(var i, j = 0; i = countrySelect.options[j]; j++) {
             if(i.value == country) {
@@ -45,6 +52,9 @@ d3.tsv("all_countries.tsv", function (data) {
         }
     }
 
+    // Takes care of drawing the graph, for example, when the page loads, or
+    // when a new country is selected. The 'duration' parameter animates any
+    // changes over a given time in milliseconds.
     function refreshGraph(duration){
         populateDict();
         countryChart.draw(duration);
