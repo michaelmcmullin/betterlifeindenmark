@@ -6,10 +6,10 @@ d3.tsv("all_countries.tsv", function (data) {
     var dict = {};
 
     selectCountry();
-    var svg = dimple.newSvg("#chart", 1200, 600);
+    var svg = dimple.newSvg("#chart", "100%", "100%");
     var countries = d3.select("#countries");
     var countryChart = new dimple.chart(svg, data);
-    countryChart.setMargins(200, 30, 50, 50);
+    countryChart.setMargins(300, 30, 50, 50);
 
     var x = countryChart.addMeasureAxis("x", country);
     x.title = "Comparison with OECD Average";
@@ -18,6 +18,8 @@ d3.tsv("all_countries.tsv", function (data) {
 
     var y = countryChart.addCategoryAxis("y", "Category");
     y.addOrderRule("Order", true);
+    y.fontFamily = "Raleway, sans-serif";
+    y.fontSize = "16px";
 
     countryChart.addSeries(null, dimple.plot.bar);
     refreshGraph(0);
@@ -71,5 +73,20 @@ d3.tsv("all_countries.tsv", function (data) {
             return countryData.positiveValue == 0 ? countryData.countryScore > 0 : countryData.countryScore < 0;
         }).classed("bad-bar", true);
     }
-});
 
+    // Handles window resizing events to ensure chart remains responsive.
+    window.onresize = function () {
+        countryChart.draw(0, true);
+    };
+
+    // Handle the 'about' button click
+    var aboutButton = document.getElementById("about_button");
+    var aboutModal = document.getElementById("about_modal");
+    var aboutCloseButton = document.getElementById("about_close_button");
+    aboutButton.addEventListener("click", function(e) {
+        aboutModal.style.display = "block";
+    }, false);
+    aboutCloseButton.addEventListener("click", function(e) {
+        aboutModal.style.display = "none";
+    }, false);
+});

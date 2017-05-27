@@ -4,60 +4,76 @@
   <meta charset="utf-8">
   <script src="https://d3js.org/d3.v3.min.js"></script>
   <script src="js/dimple.v2.0.0.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Baloo|Raleway" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 <body>
-  <h1>Denmark's Standard of Living</h1>
-  <h2>How Denmark compares to other OECD Countries</h2>
-  <p>The World Economic Forum tweeted a graph showing that <a href="https://twitter.com/wef/status/842782743637495808">
-    Denmark has the best work-life balance</a> out of all the OECD countries.
-    The original data came from the
-    <a href="www.oecd.org/statistics/Better-Life-Initiative-2016-country-notes-data.xlsx">OECD
-    Better Life Initiative, 2016</a>.</p>
-  <p>This data has been reproduced below as a bar chart. Each value was scaled
-    to a range between 1 and 100, representing the lowest and highest figure in
-    each category respectively. From there, the OECD average was calculated,
-    and each bar represents how far above or below the average Denmark scores
-    in each category. Red bars indicate bad results: sometimes this means
-    below OECD average (e.g. income), sometimes above average (homocides).
-    Using colour help distinguish these quickly.</p>
-  <p>Use the drop down below to pick other countries too!</p>
-  <select id="countries">
-    <option>Australia</option>
-    <option>Austria</option>
-    <option>Belgium</option>
-    <option>Canada</option>
-    <option>Chile</option>
-    <option>Czech Republic</option>
-    <option>Denmark</option>
-    <option>Estonia</option>
-    <option>Finland</option>
-    <option>France</option>
-    <option>Germany</option>
-    <option>Greece</option>
-    <option>Hungary</option>
-    <option>Iceland</option>
-    <option>Ireland</option>
-    <option>Israel</option>
-    <option>Italy</option>
-    <option>Japan</option>
-    <option>Korea</option>
-    <option>Luxembourg</option>
-    <option>Mexico</option>
-    <option>Netherlands</option>
-    <option>New Zealand</option>
-    <option>Norway</option>
-    <option>Poland</option>
-    <option>Portugal</option>
-    <option>Slovak Republic</option>
-    <option>Slovenia</option>
-    <option>Spain</option>
-    <option>Sweden</option>
-    <option>Switzerland</option>
-    <option>Turkey</option>
-    <option>United Kingdom</option>
-    <option>United States</option>
-  </select>
+  <header>
+    <h1>How OECD Countries Compare</h1>
+    <select id="countries">
+      <option>Australia</option>
+      <option>Austria</option>
+      <option>Belgium</option>
+      <option>Canada</option>
+      <option>Chile</option>
+      <option>Czech Republic</option>
+      <option>Denmark</option>
+      <option>Estonia</option>
+      <option>Finland</option>
+      <option>France</option>
+      <option>Germany</option>
+      <option>Greece</option>
+      <option>Hungary</option>
+      <option>Iceland</option>
+      <option>Ireland</option>
+      <option>Israel</option>
+      <option>Italy</option>
+      <option>Japan</option>
+      <option>Korea</option>
+      <option>Luxembourg</option>
+      <option>Mexico</option>
+      <option>Netherlands</option>
+      <option>New Zealand</option>
+      <option>Norway</option>
+      <option>Poland</option>
+      <option>Portugal</option>
+      <option>Slovak Republic</option>
+      <option>Slovenia</option>
+      <option>Spain</option>
+      <option>Sweden</option>
+      <option>Switzerland</option>
+      <option>Turkey</option>
+      <option>United Kingdom</option>
+      <option>United States</option>
+    </select>
+
+    <img src="img/icon_info.svg" alt="About this page" id="about_button" width="30" height="30">
+  </header>
+  <section class="about" id="about_modal">
+    <div class="modal">
+      <header>
+        <h2>How OECD countries compare to each other</h2>
+        <div id="about_close_button" class="close">&times;</div>
+      </header>
+      <div class="body">
+        <p>The World Economic Forum tweeted a graph showing that
+          <a href="https://twitter.com/wef/status/842782743637495808" target="_blank">
+          Denmark has the best work-life balance</a> out of all the OECD countries.
+          The original data came from the
+          <a href="www.oecd.org/statistics/Better-Life-Initiative-2016-country-notes-data.xlsx">OECD
+          Better Life Initiative, 2016</a>.</p>
+        <p>This data has been reproduced here as a bar chart. Each value was scaled
+          to a range between 1 and 100, representing the lowest and highest figure in
+          each category respectively. From there, the OECD average was calculated,
+          and each bar represents how far above or below the average a particular
+          country scores in each category. Red bars indicate bad results: sometimes
+          this means below the OECD average (e.g. income), sometimes above average
+          (e.g. homocides).</p>
+      </div>
+    </div>
+  </section>
+
   <div id="chart"></div>
   <script src="js/graph.js"></script>
 </body>
