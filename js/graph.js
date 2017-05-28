@@ -15,6 +15,10 @@ d3.tsv("all_countries.tsv", function (data) {
     x.title = "Comparison with OECD Average";
     x.overrideMin = -80;
     x.overrideMax = 80;
+    x.showGridlines = false;
+    x.fontFamily = "Raleway, sans-serif";
+    x.fontSize = "16px";
+    x.ticks = 1;
 
     var y = countryChart.addCategoryAxis("y", "Category");
     y.addOrderRule("Order", true);
@@ -38,7 +42,7 @@ d3.tsv("all_countries.tsv", function (data) {
         for(var i=0; i<data.length; i++) {
             var category = chartData[i]["Category"];
             dict[category] = { category: category,
-                               positiveValue: chartData[i]["PositiveValue"],
+                               positiveValue: chartData[i]["Positive Value"],
                                description: chartData[i]["Description"],
                                countryScore: chartData[i][country],
                                countryActualScore: chartData[i]["VALUE:" + country],
@@ -78,6 +82,7 @@ d3.tsv("all_countries.tsv", function (data) {
             return countryData.positiveValue == 0 ? countryData.countryScore > 0 : countryData.countryScore < 0;
         }).classed("bad-bar", true);
 
+        // Add tooltips
         countrySeries.getTooltipText = function (e) {
             return [
                 dict[e.cy].category,
@@ -86,6 +91,9 @@ d3.tsv("all_countries.tsv", function (data) {
                 "OECD Average: " + dict[e.cy].oecdAverage
             ];
         };
+
+        // Hide elements
+        countryChart.svg.selectAll(".tick line").attr("display", "none");
     }
 
     // Handles window resizing events to ensure chart remains responsive.
