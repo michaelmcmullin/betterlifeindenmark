@@ -21,7 +21,7 @@ d3.tsv("all_countries.tsv", function (data) {
     y.fontFamily = "Raleway, sans-serif";
     y.fontSize = "16px";
 
-    countryChart.addSeries(null, dimple.plot.bar);
+    var countrySeries = countryChart.addSeries(null, dimple.plot.bar);
     refreshGraph(0);
 
     // Handle the selection of a new country.
@@ -37,8 +37,13 @@ d3.tsv("all_countries.tsv", function (data) {
         var chartData = countryChart.data;
         for(var i=0; i<data.length; i++) {
             var category = chartData[i]["Category"];
-            dict[category] = { positiveValue: chartData[i]["PositiveValue"],
-                               countryScore: chartData[i][country] };
+            dict[category] = { category: category,
+                               positiveValue: chartData[i]["PositiveValue"],
+                               description: chartData[i]["Description"],
+                               countryScore: chartData[i][country],
+                               countryActualScore: chartData[i]["VALUE:" + country],
+                               oecdAverage: chartData[i]["Actual OECD Average"]
+                             };
         }
     }
 
@@ -72,6 +77,15 @@ d3.tsv("all_countries.tsv", function (data) {
             var countryData = dict[d.cy];
             return countryData.positiveValue == 0 ? countryData.countryScore > 0 : countryData.countryScore < 0;
         }).classed("bad-bar", true);
+
+        countrySeries.getTooltipText = function (e) {
+            return [
+                dict[e.cy].category,
+                dict[e.cy].description,
+                country + ": " + dict[e.cy].countryActualScore,
+                "OECD Average: " + dict[e.cy].oecdAverage
+            ];
+        };
     }
 
     // Handles window resizing events to ensure chart remains responsive.
