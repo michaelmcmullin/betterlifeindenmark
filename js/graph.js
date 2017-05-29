@@ -88,7 +88,7 @@ d3.tsv("all_countries.tsv", function (data) {
             return [
                 dict[e.cy].category,
                 dict[e.cy].description,
-                country + ": " + dict[e.cy].countryActualScore,
+                country + ": " + (Math.round(dict[e.cy].countryActualScore * 100) / 100),
                 "OECD Average: " + dict[e.cy].oecdAverage
             ];
         };

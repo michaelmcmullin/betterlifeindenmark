@@ -9,6 +9,7 @@ body {
 
 header {
   height: 70px;
+  min-width: 720px;
   box-sizing: border-box;
   background: #5b8e0f;
   color: #fff;
@@ -47,6 +48,8 @@ select {
   top: 60px;
   bottom: 5px;
   width: 100%;
+  min-width: 720px;
+  min-height: 600px;
 }
 
 .about {
