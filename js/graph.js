@@ -24,6 +24,7 @@ d3.tsv("all_countries.tsv", function (data) {
     y.addOrderRule("Order", true);
     y.fontFamily = "Raleway, sans-serif";
     y.fontSize = "16px";
+    y.title = null;
 
     var countrySeries = countryChart.addSeries(null, dimple.plot.bar);
     refreshGraph(0);
@@ -92,8 +93,11 @@ d3.tsv("all_countries.tsv", function (data) {
             ];
         };
 
-        // Hide elements
-        countryChart.svg.selectAll(".tick line").attr("display", "none");
+        // Hide elements:
+        // 1. Tick lines on y-axis
+        y.shapes.selectAll(".tick line").attr("display", "none");
+        // 2. The '0' on the x-axis
+        x.shapes.selectAll("text").attr("display", "none");
     }
 
     // Handles window resizing events to ensure chart remains responsive.
