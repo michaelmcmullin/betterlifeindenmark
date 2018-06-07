@@ -1,5 +1,5 @@
 # Better Life In Denmark
-### [Live Demo](https://mrmcnerd.github.io/betterlifeindenmark/)
+### [Live Demo](https://michaelmcmullin.github.io/betterlifeindenmark/)
 
 A number of graphs have popped up using data from the [OECD Better Life
 Initiative data, 2016](www.oecd.org/statistics/Better-Life-Initiative-2016-country-notes-data.xlsx).
